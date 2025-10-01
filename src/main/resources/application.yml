@@ -1,0 +1,33 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, prometheus, metrics
+
+  endpoint:
+    health:
+      show-details: always
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+
+  metrics:
+    tags:
+      application: monitoringtest
+
+spring:
+  application:
+    name: application
+  cloud:
+    vault:
+      token: ${vaultToken}
+      host: 3.34.3.252
+      scheme: http
+      kv:
+        enabled: true
+  config:
+    import: vault://
+
+server:
+  forward-headers-strategy: framework

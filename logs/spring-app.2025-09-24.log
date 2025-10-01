@@ -1,0 +1,48 @@
+2025-09-24 13:41:09.900 INFO  [main] c.s.a.m.MonitoringTestApplication - Starting MonitoringTestApplication using Java 21.0.7 with PID 25068 (C:\Users\SSAFY\Desktop\project\monitoringTest\build\classes\java\main started by SSAFY in C:\Users\SSAFY\Desktop\project\monitoringTest)
+2025-09-24 13:41:09.901 INFO  [main] c.s.a.m.MonitoringTestApplication - No active profile set, falling back to 1 default profile: "default"
+2025-09-24 13:41:10.781 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-09-24 13:41:10.789 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-09-24 13:41:10.793 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-09-24 13:41:10.793 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-09-24 13:41:10.830 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-09-24 13:41:10.830 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 897 ms
+2025-09-24 13:41:11.149 INFO  [main] o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
+2025-09-24 13:41:11.162 WARN  [main] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: d8636e32-fb19-4373-b8d5-1edf4a5c528d
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-09-24 13:41:11.168 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-09-24 13:41:11.393 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-09-24 13:41:11.407 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-09-24 13:41:11.416 INFO  [main] c.s.a.m.MonitoringTestApplication - Started MonitoringTestApplication in 1.969 seconds (process running for 2.436)
+2025-09-24 13:41:11.742 INFO  [RMI TCP Connection(1)-70.12.246.93] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-24 13:41:11.742 INFO  [RMI TCP Connection(1)-70.12.246.93] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-09-24 13:41:11.743 INFO  [RMI TCP Connection(1)-70.12.246.93] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-09-24 13:59:34.162 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-24 13:59:34.168 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-09-24 13:59:36.359 INFO  [main] c.s.a.m.MonitoringTestApplication - Starting MonitoringTestApplication using Java 21.0.7 with PID 20208 (C:\Users\SSAFY\Desktop\project\monitoringTest\build\classes\java\main started by SSAFY in C:\Users\SSAFY\Desktop\project\monitoringTest)
+2025-09-24 13:59:36.360 INFO  [main] c.s.a.m.MonitoringTestApplication - No active profile set, falling back to 1 default profile: "default"
+2025-09-24 13:59:37.235 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-09-24 13:59:37.244 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-09-24 13:59:37.246 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-09-24 13:59:37.246 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-09-24 13:59:37.283 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-09-24 13:59:37.283 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 891 ms
+2025-09-24 13:59:37.604 INFO  [main] o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
+2025-09-24 13:59:37.619 WARN  [main] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 4beba219-672e-49db-bcc1-d15006c248b8
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-09-24 13:59:37.624 INFO  [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-09-24 13:59:37.854 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-09-24 13:59:37.869 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-09-24 13:59:37.877 INFO  [main] c.s.a.m.MonitoringTestApplication - Started MonitoringTestApplication in 1.973 seconds (process running for 2.436)
+2025-09-24 13:59:38.148 INFO  [RMI TCP Connection(2)-70.12.246.93] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-24 13:59:38.149 INFO  [RMI TCP Connection(2)-70.12.246.93] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-09-24 13:59:38.150 INFO  [RMI TCP Connection(2)-70.12.246.93] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-09-24 17:49:43.445 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-24 17:49:43.461 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
