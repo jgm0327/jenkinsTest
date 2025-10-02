@@ -7,6 +7,7 @@ pipeline {
       agent any
       steps { checkout scm }
     }
+    
 
     // 도커/컴포즈 명령은 docker CLI 컨테이너에서 실행 (호스트의 docker.sock 사용)
     stage('Deploy backend') {
