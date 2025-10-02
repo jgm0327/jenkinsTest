@@ -14,7 +14,7 @@ pipeline {
       agent {
         docker {
           image 'docker:27.1.1-cli'        // docker + compose 포함
-          args  "-v /var/run/docker.sock:/var/run/docker.sock
+          args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
       }
       steps {
