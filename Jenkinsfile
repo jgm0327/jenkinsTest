@@ -7,14 +7,14 @@ pipeline {
       agent any
       steps { checkout scm }
     }
-    
+
 
     // 도커/컴포즈 명령은 docker CLI 컨테이너에서 실행 (호스트의 docker.sock 사용)
     stage('Deploy backend') {
       agent {
         docker {
           image 'docker:27.1.1-cli'        // docker + compose 포함
-          args  "-v /var/run/docker.sock:/var/run/docker.sock -v $WORKSPACE:$WORKSPACE -w $WORKSPACE"
+          args  "-v /var/run/docker.sock:/var/run/docker.sock
         }
       }
       steps {
