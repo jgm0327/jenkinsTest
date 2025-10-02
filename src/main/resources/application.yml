@@ -22,7 +22,7 @@ spring:
   cloud:
     vault:
       token: ${vaultToken}
-      host: 3.34.3.252
+      host: ${vaultAddr}
       scheme: http
       kv:
         enabled: true
