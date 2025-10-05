@@ -14,9 +14,15 @@ pipeline {
       agent {
         docker {
           image 'docker:27.1.1-cli'        // docker + compose 포함
-          args  "--entrypoint='' -v /var/run/docker.sock:/var/run/docker.sock --group-add 988"
+          args  "--entrypoint='' -v /var/run/docker.sock:/var/run/docker.sock --group-add 988 \
+             -e HOME=/var/jenkins_home -e DOCKER_CONFIG=/var/jenkins_home/.docker \
+             -v /home/ubuntu/monitoring-stack:/home/ubuntu/monitoring-stack:ro"
           reuseNode true
         }
+      }
+      environment {
+        HOME = '/var/jenkins_home'
+        DOCKER_CONFIG = '/var/jenkins_home/.docker'
       }
       steps {
           withCredentials([
@@ -25,8 +31,7 @@ pipeline {
           ]) {
             sh '''
               set -eux
-              ls -al /home/ubuntu/monitoring-stack/backend
-              id ls -l /var/run/docker.sock || true
+              mkdir -p "$DOCKER_CONFIG"
               docker version
               docker compose version
               # compose가 위 환경변수를 그대로 컨테이너에 전달 → application.yml에서 ${...}로 읽음
