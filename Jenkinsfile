@@ -25,6 +25,7 @@ pipeline {
           ]) {
             sh '''
               set -eux
+              pwd
               id ls -l /var/run/docker.sock || true
               docker version
               docker compose version
