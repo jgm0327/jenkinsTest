@@ -25,7 +25,7 @@ pipeline {
           ]) {
             sh '''
               set -eux
-              pwd
+              ls -al /home/ubuntu/monitoring-stack/backend
               id ls -l /var/run/docker.sock || true
               docker version
               docker compose version
