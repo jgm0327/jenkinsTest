@@ -14,7 +14,8 @@ pipeline {
       agent {
         docker {
           image 'docker:27.1.1-cli'        // docker + compose 포함
-          args '-v /var/run/docker.sock:/var/run/docker.sock'
+          args  "--entrypoint='' -v /var/run/docker.sock:/var/run/docker.sock --group-add 998"
+          reuseNode true
         }
       }
       steps {
@@ -23,7 +24,10 @@ pipeline {
             string(credentialsId: 'vault-addr',  variable: 'VAULT_ADDR')
           ]) {
             sh '''
-              set -eu
+              set -eux
+              id ls -l /var/run/docker.sock || true
+              docker version
+              docker compose version
               cd backend
               # compose가 위 환경변수를 그대로 컨테이너에 전달 → application.yml에서 ${...}로 읽음
               docker compose -p backend -f compose.yml up -d --build app
