@@ -31,7 +31,7 @@ pipeline {
               docker compose version
               cd backend
               # compose가 위 환경변수를 그대로 컨테이너에 전달 → application.yml에서 ${...}로 읽음
-              docker compose -p backend -f compose.yml up -d --build app
+              docker compose -p backend -f /home/ubuntu/monitoring-stack/backend/compose.yml up -d --build app
             '''
           }
         }
