@@ -20,8 +20,8 @@ pipeline {
       }
       steps {
           withCredentials([
-            string(credentialsId: 'vault-token', variable: 'VAULT_TOKEN'),
-            string(credentialsId: 'vault-addr',  variable: 'VAULT_ADDR')
+            string(credentialsId: 'VAULT_TOKEN', variable: 'VAULT_TOKEN'),
+            string(credentialsId: 'VAULT_ADDR',  variable: 'VAULT_ADDR')
           ]) {
             sh '''
               set -eux
