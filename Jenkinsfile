@@ -12,7 +12,7 @@ pipeline {
     stage('Build Jar') {
       agent {
         docker {
-          image 'eclipse-temurin:17-jdk'   // JDK 포함 컨테이너
+          image 'eclipse-temurin:21-jdk'   // JDK 포함 컨테이너
           reuseNode true
         }
       }
