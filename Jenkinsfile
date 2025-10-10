@@ -4,12 +4,14 @@ pipeline {
 
   stages {
     stage('Checkout') {
+      agent any
+      steps { checkout scm 
+            
       sh '''
       pwd
       echo "WORKSPACE=${env.WORKSPACE}"
       '''
-      agent any
-      steps { checkout scm }
+            }
     }
 
     stage('Build JAR (Gradle/Maven 자동감지)') {
