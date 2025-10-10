@@ -9,13 +9,31 @@ pipeline {
       steps { checkout scm }
     }
 
-    stage('Build Jar & Docker Image') {
+    stage('Build Jar') {
+      agent {
+        docker {
+          image 'eclipse-temurin:17-jdk'   // JDK 포함 컨테이너
+          reuseNode true
+        }
+      }
       steps {
         sh '''
-        chmod +x ./gradlew
-        ./gradlew clean bootJar -x test
-        rm /home/ubuntu/monitoring-stack/app/app.jar
-        cp app.jar /home/ubuntu/monitoring-stack/app/app.jar
+          set -eux
+          chmod +x ./gradlew
+          ./gradlew clean bootJar -x test
+
+          # 생성된 JAR 찾기
+          JAR=$(ls build/libs/*.jar | head -n1)
+
+          # compose.yml이 /home/ubuntu/monitoring-stack/backend/compose.yml 라면
+          # build context는 보통 ./app 이므로 여기에 app.jar를 둬야 Dockerfile COPY가 됨
+          TARGET_DIR="/home/ubuntu/monitoring-stack/backend/app"
+          mkdir -p "$TARGET_DIR"
+          rm -f "$TARGET_DIR/app.jar"
+          cp -f "$JAR" "$TARGET_DIR/app.jar"
+
+          echo "[DEBUG] Copied jar:"
+          ls -l "$TARGET_DIR"
         '''
       }
     }
