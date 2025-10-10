@@ -46,7 +46,7 @@ pipeline {
           image 'docker:27.1.1-cli'        // docker + compose 포함
           args  "--entrypoint='' -v /var/run/docker.sock:/var/run/docker.sock --group-add 988 \
              -e HOME=/var/jenkins_home -e DOCKER_CONFIG=/var/jenkins_home/.docker \
-             -v /home/ubuntu/monitoring-stack:/home/ubuntu/monitoring-stack:ro"
+             -v /home/ubuntu/monitoring-stack:/home/ubuntu/monitoring-stack:rw"
           reuseNode true
         }
       }
