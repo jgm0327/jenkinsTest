@@ -13,6 +13,8 @@ pipeline {
       agent {
         docker {
           image 'eclipse-temurin:17-jdk'   // JDK 17
+          pwd
+          echo "WORKSPACE=${env.WORKSPACE}"
           args  "-v $WORKSPACE:$WORKSPACE -w $WORKSPACE"
           reuseNode true
         }
