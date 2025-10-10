@@ -17,6 +17,10 @@ java {
     }
 }
 
+bootjar {
+    archiveFileName = 'app.jar'
+}
+
 repositories {
     mavenCentral()
 }
