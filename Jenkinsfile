@@ -100,20 +100,29 @@ pipeline {
     }
 
     stage('Wait for health (NEW color)') {
-      agent any   // ← docker CLI 컨테이너 필요 없음
+      agent {
+        docker {
+          image 'docker:27.1.1-cli'
+          args  "--entrypoint='' -v /var/run/docker.sock:/var/run/docker.sock --group-add 988"
+          reuseNode true
+        }
+      }
       steps {
         sh '''
           set -eux
           for i in $(seq 1 60); do
-            if curl -fsS "http://127.0.0.1:${NEW_PORT}/actuator/health" | grep -q '"UP"'; then
-              echo "Health OK on ${NEW_PORT}"
-              exit 0
-            fi
-            echo "waiting app on ${NEW_PORT} ..."
+            STATUS=$(docker inspect -f '{{.State.Health.Status}}' "app-${NEW_COLOR}" 2>/dev/null || echo "starting")
+            [ "$STATUS" = "healthy" ] && break
+            echo "health=${STATUS} ... waiting"
             sleep 2
+            if [ $i -eq 60 ]; then
+              echo "Health timeout"
+              docker logs --tail 200 "app-${NEW_COLOR}" || true
+              exit 1
+            fi
           done
-          echo "Health timeout on ${NEW_PORT}"
-          exit 1
+          # (보강) 내부 프로브
+          docker exec "app-${NEW_COLOR}" sh -lc "wget -qO- http://127.0.0.1:8080/actuator/health | grep -q '\"UP\"'"
         '''
       }
     }
