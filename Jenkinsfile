@@ -128,21 +128,29 @@ pipeline {
     }
 
     stage('Switch Nginx to NEW color') {
-      // 호스트 Nginx에 접근해야 하므로 agent any (컨테이너 X)
-      agent any
+      agent {
+        docker {
+          image 'docker:27.1.1-cli'
+          // 호스트 Nginx 설정/재시작을 위해 host PID, /etc/nginx, /run 마운트
+          args  "--entrypoint='' -u 0 --pid=host \
+                 -v /etc/nginx/conf.d:/host_nginx_conf \
+                 -v /run:/host_run"
+          reuseNode true
+        }
+      }
       steps {
         sh '''
           set -eux
-          echo "Switching to ${NEW_COLOR} (${NEW_PORT})"
-
-          # 업스트림 한 줄 파일 교체 (sudoers에 NOPASSWD 필요)
-          echo "set \\$app_upstream http://127.0.0.1:${NEW_PORT};" | sudo tee /etc/nginx/conf.d/app-upstream.conf >/dev/null
-
-          sudo nginx -t
-          sudo nginx -s reload
-
-          # 현재 활성 색 기록
-          echo "${NEW_COLOR}" | sudo tee /var/run/app_active_color >/dev/null
+    
+          # 1) 활성 업스트림 파일 갱신 (호스트 경로로 직접 기록)
+          printf "set \\$app_upstream http://127.0.0.1:%s;\\n" "${NEW_PORT}" > /host_nginx_conf/app-upstream.conf
+    
+          # 2) 호스트의 Nginx에 HUP 시그널 (reload)
+          #    --pid=host 덕분에 호스트 PID를 볼 수 있음
+          [ -f /host_run/nginx.pid ] || { echo "nginx.pid not found on host"; exit 1; }
+          kill -HUP "$(cat /host_run/nginx.pid)"
+    
+          echo "Nginx switched to port ${NEW_PORT}"
         '''
       }
     }
