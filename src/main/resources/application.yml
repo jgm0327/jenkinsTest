@@ -23,7 +23,7 @@ spring:
     vault:
       token: ${vaultToken}
       host: ${vaultAddr}
-      scheme: http
+      scheme: https
       kv:
         enabled: true
   config:
